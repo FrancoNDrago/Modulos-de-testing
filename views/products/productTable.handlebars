@@ -1,0 +1,30 @@
+<div class="container-fluid bg-danger d-flex justify-content-center align-items-center" style="min-height: 100vh">
+    <div class="col-10 bg-dark opacity-75 text-white p-2">
+        <div class="d-flex flex-row-reverse">
+            <div>
+                <a href="abm/add" class="btn btn-danger" title="Agregar producto"><i class="fa-solid fa-lg fa-plus"></i></a>
+            </div>
+        </div>
+        <table class="table table-dark table-hover bg-danger">
+              <thead>
+                <tr>
+                    <th scope="col">Titulo</th>
+                    <th scope="col">Precio</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each products.products}}
+                <tr>
+                    <th>{{this.title}}</th>
+                    <td>${{this.price}}</td>
+                    <td class="d-flex justify-content-evenly">
+                        <a class="text-danger" href="abm/mod?pid={{this._id}}" title="Modificar producto"><i class="fa-solid fa-lg fa-pencil"></i></a>
+                        <a class="text-danger" href="abm/del?pid={{this._id}}" title="Eliminar producto"><i class="fa-solid fa-lg fa-trash"></i></a>
+                    </td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,82 @@
+[
+	{
+	  "id": "1",
+	  "title": "Camiseta",
+	  "price": "19.999",
+	  "thumbnail": "https://assets.adidas.com/images/w_600,f_auto,q_auto/d88ae2138faf49be8f74aeca012c62eb_9366/Camiseta_Titular_Argentina_22_Messi_Blanco_HL8425_01_laydown.jpg",
+	  "code": "ARG1",
+	  "stock": 25
+	},
+	{
+	  "id": "2",
+	  "title": "Camiseta interior",
+	  "price": "15.999",
+	  "thumbnail": "https://pbs.twimg.com/media/Fgv6gXUXkAE6Kg1?format=jpg&name=900x900",
+	  "code": "ARG2",
+	  "stock": 25
+	},
+	{
+	  "id": "3",
+	  "title": "Short",
+	  "price": "8.999",
+	  "thumbnail": "https://sporting.vtexassets.com/arquivos/ids/560737/6HK8071-000-1.jpg?v=637931679922730000",
+	  "code": "ARG3",
+	  "stock": 25
+	},
+	{
+	  "id": "4",
+	  "title": "Medias",
+	  "price": "1.999",
+	  "thumbnail": "https://pbs.twimg.com/media/Fgv6gXUXkAE6Kg1?format=jpg&name=900x900",
+	  "code": "ARG4",
+	  "stock": 25
+	},
+	{
+	  "id": "5",
+	  "title": "Medias cortadas",
+	  "price": "999",
+	  "thumbnail": "https://pbs.twimg.com/media/Fgv6gXUXkAE6Kg1?format=jpg&name=900x900",
+	  "code": "ARG5",
+	  "stock": 25
+	},
+	{
+	  "id": "6",
+	  "title": "Canilleras",
+	  "price": "1.999",
+	  "thumbnail": "https://pbs.twimg.com/media/Fgv6gXUXkAE6Kg1?format=jpg&name=900x900",
+	  "code": "ARG6",
+	  "stock": 25
+	},
+	{
+	  "id": "7",
+	  "title": "Vendas",
+	  "price": "1.999",
+	  "thumbnail": "https://pbs.twimg.com/media/Fgv6gXUXkAE6Kg1?format=jpg&name=900x900",
+	  "code": "ARG7",
+	  "stock": 25
+	},
+	{
+	  "id": "8",
+	  "title": "Botines",
+	  "price": "21.999",
+	  "thumbnail": "https://pbs.twimg.com/media/Fgv6gXUXkAE6Kg1?format=jpg&name=900x900",
+	  "code": "ARG8",
+	  "stock": 50
+	},
+	{
+	  "id": "9",
+	  "title": "Botinero",
+	  "price": "21.999",
+	  "thumbnail": "https://pbs.twimg.com/media/Fgv6gXUXkAE6Kg1?format=jpg&name=900x900",
+	  "code": "ARG9",
+	  "stock": 25
+	},
+	{
+	  "id": "10",
+	  "title": "Gatorade",
+	  "price": "500",
+	  "thumbnail": "https://pbs.twimg.com/media/Fgv6gXUXkAE6Kg1?format=jpg&name=900x900",
+	  "code": "ARG10",
+	  "stock": 25
+	}
+  ]

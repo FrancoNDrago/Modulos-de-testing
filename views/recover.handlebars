@@ -1,0 +1,24 @@
+<div class="container-fluid bg-danger d-flex justify-content-center align-items-center" style="min-height: 100vh">
+    <div class="col-10 bg-dark opacity-75 text-white p-5">
+        <h1 class="text-center mb-3">Recuperacion de Contraseña</h1>
+        <h4 class="text-danger" id="message">{{message}}</h4>
+        <input type="hidden" id="email" value="{{email}}" />
+        <input type="hidden" id="user" value="{{user}}" />
+        <input type="hidden" id="timestamp" value="{{timestamp}}" />
+        <form action="/api/sessions/login" method="post" id="recover_form">
+            <div class="mb-3">
+                <label for="password" class="form-label">Contraseña</label>
+                <input type="password" class="form-control" name="password" id="password">
+            </div>
+            <div class="mb-3">
+                <label for="re-password" class="form-label">Confirmar contraseña</label>
+                <input type="password" class="form-control" name="re-password" id="re_password">
+            </div>
+            <div class="d-flex justify-content-center">
+                <button type="submit" class="btn btn-danger">Recuperar</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="js/recover.js"></script>

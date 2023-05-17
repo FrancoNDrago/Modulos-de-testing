@@ -1,0 +1,156 @@
+paths:
+  /:
+    get:
+      summary: Vista home del proyecto [Redirecciona a "/products"]
+      tags:
+        - Views
+      responses:
+        "301":
+          description: Redirecciona a la vista de productos
+
+  /products:
+    get:
+      summary: Listado de productos
+      tags:
+        - Views
+      parameters:
+        - name: limit
+          in: query
+          description: Limite de registros por pagina
+          schema:
+            $type: Number
+            minimum: 1
+            default: 10
+        - name: query
+          in: query
+          description: Filtros de busqueda
+          schema:
+            $type: JSONString
+            default: "{}"
+        - name: sort
+          in: query
+          description: Ordenamiento de los productos por precio (1 - Ascendente, -1 - Descendente)
+          schema:
+            $type: Number
+            default: 1
+        - name: page
+          in: query
+          description: Numero de pagina a obtener
+          schema:
+            $type: Number
+            minimum: 1
+            default: 1
+      responses:
+        "200":
+          description: Vista de listado de productos
+
+  /products/abm:
+    get:
+      summary: Tabla ABM producto
+      tags:
+        - Views
+      responses:
+        "200":
+          description: Vista de la tabla que lista los productos para su ABM
+
+  /products/abm/{opt}:
+    get:
+      summary: Formulario de producto
+      tags:
+        - Views
+      parameters:
+        - name: opt
+          in: path
+          required: true
+          description: Tipo de operacion que se desea realizar
+          schema:
+            $type: String
+      responses:
+        "200":
+          description: Vista del formulario para productos
+
+  /products/{pid}:
+    get:
+      summary: Detalle de producto
+      tags:
+        - Views
+      parameters:
+        - name: pid
+          in: path
+          required: true
+          description: Id del producto que se desea visualizar
+          schema:
+            $type: String
+      responses:
+        "200":
+          description: Vista del detalle de un producto
+
+  /realtimeproducts:
+    get:
+      summary: Listado de productos en tiempo real
+      tags:
+        - Views
+      responses:
+        "200":
+          description: Vista de listado de productos en tiempo real utilizando WebSocket
+
+  /carts/{cid}:
+    get:
+      summary: Detalle del carrito
+      tags:
+        - Views
+      parameters:
+        - name: cid
+          in: path
+          required: true
+          description: Id del carrito que se desea visualizar
+          schema:
+            $type: String
+      responses:
+        "200":
+          description: Vista del detalle de un carrito
+
+  /register:
+    get:
+      summary: Formulario de registro
+      tags:
+        - Views
+      responses:
+        "200":
+          description: Vista del formulario de registro
+
+  /login:
+    get:
+      summary: Formulario de login
+      tags:
+        - Views
+      responses:
+        "200":
+          description: Vista del formulario de login
+
+  /recover:
+    get:
+      summary: Formulario de recuperacion de contraseña
+      tags:
+        - Views
+      responses:
+        "200":
+          description: Vista del formulario de recuperacion de contraseña
+
+  /profile:
+    get:
+      summary: Perfil de usuario
+      tags:
+        - Views
+      responses:
+        "200":
+          description: Vista de perfil de usuario
+
+  /chat:
+    get:
+      summary: Chat de usuarios
+      tags:
+        - Views
+      responses:
+        "200":
+          description: Vista del chat para usuarios

@@ -1,0 +1,23 @@
+<div class="container-fluid bg-danger d-flex justify-content-center align-items-center" style="min-height: 110vh">
+    <div class="col-10 bg-dark opacity-75 text-white p-5">
+        <h1 class="text-center mb-3">Login</h1>
+        <h4 class="text-danger">{{message}}</h4>
+        <form action="/api/sessions/login" method="post" id="login_form">
+            <div class="mb-3">
+                <label for="email" class="form-label">Email address</label>
+                <input type="email" class="form-control" name="email">
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" name="password">
+            </div>
+            <div id="emailHelp" class="form-text text-white mb-3">¿No estas registrado? <a href="/register">Registrate!</a></div>
+            <a href="/api/sessions/github" class="btn btn-outline-danger">Ingresar con GitHub <i class="fa-brands fa-lg fa-github"></i></a>
+            <div class="d-flex justify-content-center">
+                <button type="submit" class="btn btn-danger">Iniciar sesion</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="js/login.js"></script>

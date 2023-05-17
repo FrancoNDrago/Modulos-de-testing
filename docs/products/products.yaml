@@ -1,0 +1,280 @@
+paths:
+  /api/products/:
+    get:
+      summary: Lista todos los productos
+      tags:
+        - Productos
+      parameters:
+        - name: limit
+          in: query
+          description: Limite de registros por pagina
+          schema:
+            $type: Number
+            minimum: 1
+            default: 10
+        - name: query
+          in: query
+          description: Filtros de busqueda
+          schema:
+            $type: JSONString
+            default: "{}"
+        - name: sort
+          in: query
+          description: Ordenamiento de los productos por precio (1 - Ascendente, -1 - Descendente)
+          schema:
+            $type: Number
+            default: 1
+        - name: page
+          in: query
+          description: Numero de pagina a obtener
+          schema:
+            $type: Number
+            minimum: 1
+            default: 1
+      responses:
+        "200":
+          description: Los productos fueron obtenidos satisfactoriamente
+          content:
+            application/json:
+              schema:
+                type: object
+                items:
+                  $ref: "#components/schemas/Productos"
+
+    post:
+      summary: Agrega un nuevo producto
+      tags:
+        - Productos
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#components/requestBodies/productBody"
+      responses:
+        "200":
+          description: El producto fue cargado satisfactoriamente
+          content:
+            application/json:
+              schema:
+                type: object
+                items:
+                  - {
+                    status: success,
+                    message: "Producto cargado exitosamente. ID: {pid}"
+                  }
+  
+
+  /api/products/{pid}:
+
+    get:
+      summary: Muestra los datos de un solo producto
+      tags:
+        - Productos
+      parameters:
+        - name: pid
+          in: path
+          required: true
+          description: Id del producto que se desea obtener
+          schema:
+            $type: String
+      responses:
+        "200":
+          description: El producto fue obtenido satisfactoriamente
+          content:
+            application/json:
+              schema:
+                type: object
+                items:
+                  $ref: "#components/schemas/Producto"
+
+    put:
+      summary: Modifica un producto
+      tags:
+        - Productos
+      parameters:
+        - name: pid
+          in: path
+          required: true
+          description: Id del producto que se desea modificar
+          schema:
+            $type: String
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#components/requestBodies/productBody"
+      responses:
+        "200":
+          description: El producto fue modificado exitosamente!
+          content:
+            application/json:
+              schema:
+                type: object
+                items:
+                  - {
+                    status: success,
+                    message: "Producto modificado exitosamente! ID: {pid}"
+                  }
+
+    delete:
+      summary: Elimina un producto
+      tags:
+        - Productos
+      parameters:
+        - name: pid
+          in: path
+          required: true
+          description: Id del producto que se desea modificar
+          schema:
+            $type: String
+      responses:
+        "200":
+          description: El producto fue eliminado satisfactoriamente
+          content:
+            application/json:
+              schema:
+                type: object
+                items:
+                  - {
+                    status: success,
+                    message: "Producto eliminado exitosamente! ID: {pid}"
+                  }
+
+
+components:
+  schemas:
+    Productos:
+      type: object
+      properties:
+        products:
+          type: array[Producto]
+          description: Array de productos
+        totalPages:
+          type: Number
+          description: Total de páginas
+        prevPage:
+          type: Number || null
+          description: Número de página anterior
+        nextPage:
+          type: Number || null
+          description: Número de página siguiente
+        page:
+          type: Number
+          description: Número de página actual
+        hasPrevPage:
+          type: Boolean
+          description: Si existe página anterior
+        hasNextPage:
+          type: Boolean
+          description: Si existe página siguiente
+        prevLink:
+          type: String
+          description: Link a la anterior página
+        nextLink:
+          type: String
+          description:  Link a la siguiente página
+      example:
+        products:
+          - {
+            _id: ObjectId(63e10985e529735dd5c48127),
+            title: Camiseta,
+            description: Camiseta de la seleccion argentina de marca adidas,
+            code: ARG1,
+            price: 19999,
+            stock: 25,
+            category: Camiseta,
+            thumbnails: [ img/conjunto_fubol.png ],
+            owner: ObjectId(ARG1)
+          }
+        totalPages: 3
+        prevPage: null
+        nextPage: 2
+        page: 1
+        hasPrevPage: false
+        hasNextPage: true
+        prevLink: null
+        nextLink: "http://localhost:8080/products?limit=10&page=2&sort=1&query={}"
+
+    Producto:
+      type: object
+      properties:
+        _id:
+          type: ObjectId
+          description: Id autogenerado por mongo
+        title:
+          type: String
+          description: Titulo del producto
+        description:
+          type: String
+          description: Descripción del producto
+        code:
+          type: String
+          description: Código interno del producto
+        price:
+          type: Number
+          description: Precio del producto
+        status:
+          type: Boolean
+          description: Estado del producto (true - Activo, false - Baja)
+        stock:
+          type: Number
+          description: Stock del producto
+        category:
+          type: String
+          description: Categoría del producto
+        thumbnails:
+          type: array[String]
+          description: Lista de path a las fotos del producto
+        owner:
+          type: ObjectId
+          description: Dueño del producto
+      example:
+        _id: ObjectId(63e10985e529735dd5c48127),
+        title: Camiseta,
+        description: Camiseta de la seleccion argentina de marca adidas,
+        code: ARG1,
+        price: 19999,
+        stock: 25,
+        category: Camiseta,
+        thumbnails: [ img/conjunto_fubol.png ],
+        owner: ObjectId(ARG1)
+  
+  requestBodies:
+    productBody:
+      type: object
+      properties:
+        title:
+          type: String
+          description: Titulo del producto
+        description:
+          type: String
+          description: Descripción del producto
+        code:
+          type: String
+          description: Código interno del producto
+        price:
+          type: Number
+          description: Precio del producto
+        stock:
+          type: Number
+          description: Stock del producto
+        category:
+          type: String
+          description: Categoría del producto
+        thumbnails:
+          type: [String]
+          description: Lista de path a las fotos del producto
+        owner:
+          type: ObjectId
+          description: Dueño del producto
+      example:
+        title: Camiseta,
+        description: Camiseta de la seleccion argentina de marca adidas,
+        code: ARG1,
+        price: 19999,
+        stock: 25,
+        category: Camiseta,
+        thumbnails: [ img/conjunto_fubol.png ],
+        owner: ObjectId(ARG1)

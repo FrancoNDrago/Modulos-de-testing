@@ -1,0 +1,120 @@
+paths:
+  /api/tests/mockingproducts:
+    get:
+      summary: Datos mock de productos
+      tags:
+        - Mocks
+      parameters:
+        - name: qty
+          in: query
+          description: Cantidad de productos a recibir
+          schema:
+            $type: Number
+            minimum: 1
+            default: 50
+      responses:
+        "200":
+          description: Devuelve datos mock de productos
+          schema:
+            $type: object
+            items:
+              $ref: '#components/schemas/mockProductRes'
+
+  /api/tests/mockingusers:
+    get:
+      summary: Datos mock de usuarios
+      tags:
+        - Mocks
+      parameters:
+        - name: qty
+          in: query
+          description: Cantidad de usuarios a recibir
+          schema:
+            $type: Number
+            minimum: 1
+            default: 20
+      responses:
+        "200":
+          description: Devuelve datos mock de usuarios
+          schema:
+            $type: object
+            items:
+              $ref: "#components/schemas/mockUserRes"
+
+  /api/tests/loggerTest:
+    get:
+      summary: Datos mock de logeo
+      tags:
+        - Mocks
+      responses:
+        "200":
+          description: Genera logs en el server
+          schema:
+            $type: object
+            items:
+              $ref: "#components/schemas/mockLoggerRes"
+
+components:
+  schemas:
+    mockProductRes:
+      type: array
+      properties:
+        _id:
+          type: String
+          description: String mock de ID de producto 
+        title:
+          type: String
+          description: Titulo del producto
+        description:
+          type: String
+          description: Descripcion del producto
+        code:
+          type: String
+          description: Codigo de producto
+        price:
+          type: Number
+          description: Precio del producto
+        status:
+          type: Boolean
+          description: Estado del producto (Activo - Inactivo)
+        stock:
+          type: Number
+          description: Stock del producto
+        category:
+          type: String
+          description: Categoria del producto
+        thumbnails:
+          type: array[]
+          description: Paths a las imagenes del producto
+
+    mockUserRes:
+      type: array
+      properties:
+        first_name:
+          type: String
+          description: Nombre del usuario
+        last_name:
+          type: String
+          description: Apellido del usuario
+        email:
+          type: String
+          description: Email del usuario
+        age:
+          type: Number
+          description: Edad del usuario
+        password:
+          type: String
+          description: Contraseña del usuario
+        rol:
+          type: String
+          description: Rol del usuario (user, premium, admin)
+        cart:
+          type: Cart
+          description: Datos del carrito
+
+    mockLoggerRes:
+      type: object
+      properties:
+        status:
+          type: String
+          description: Mensaje de estado de peticion (por ahora solo success)

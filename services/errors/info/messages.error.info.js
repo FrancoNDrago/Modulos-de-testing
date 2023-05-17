@@ -1,0 +1,1 @@
+export const userNotFound = ()=>`El usuario no esta registrado.`

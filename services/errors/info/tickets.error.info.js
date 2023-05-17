@@ -1,0 +1,1 @@
+export const ticketAlreadyExist = (code)=> `El ticket con codigo ${code} ya esta cargado.`;

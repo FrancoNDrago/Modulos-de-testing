@@ -1,0 +1,74 @@
+<div class="container-fluid bg-danger d-flex justify-content-center align-items-center" style="min-height: 100vh">
+    <div class="col-10 bg-dark opacity-75 text-white p-5">
+        <input type="hidden" id="operation" value="{{opt}}">
+        <input type="hidden" id="product_id" value="{{product._id}}">
+        <form id="prod_form" enctype="multipart/form-data">
+            <input type="hidden" name="owner" id="user_id" value="{{session.user._id}}">
+            <div class="row">
+                <div class="col-6 p-1">
+                    <div class="col-6">
+                        <label for="_id" class="form-label">ID</label>
+                        <input type="text" class="form-control" name="id" value="{{product._id}}" disabled>
+                    </div>
+                </div>
+                <div class="col-6 p-1"></div>
+            </div>
+            <div class="row">
+                <div class="col-6 p-1">
+                    <div>
+                        <label for="title" class="form-label">Titulo</label>
+                        <input type="text" class="form-control" name="title" value="{{product.title}}">
+                    </div>
+                </div>
+                <div class="col-6 p-1">
+                    <div>
+                        <label for="code" class="form-label">Codigo</label>
+                        <input type="text" class="form-control" name="code" value="{{product.code}}">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6 p-1">
+                    <div>
+                        <label for="price" class="form-label">Precio</label>
+                        <input type="text" class="form-control" name="price" value="{{product.price}}">
+                    </div>
+                </div>
+                <div class="col-6 p-1">
+                    <div>
+                        <label for="stock" class="form-label">Stock</label>
+                        <input type="text" class="form-control" name="stock" value="{{product.stock}}">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6 p-1">
+                    <div>
+                        <label for="category" class="form-label">Categoría</label>
+                        <input type="text" class="form-control" name="category"  value="{{product.category}}">
+                    </div>
+                </div>
+                <div class="col-6 p-1">
+                    <div>
+                        <label for="thumbnails" class="form-label">Fotos</label>
+                        <input class="form-control" type="file" name="thumbnails" multiple>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="form-floating p-1">
+                    <textarea class="form-control" placeholder="Leave a comment here" name="description" style="height: 100px">{{product.description}}</textarea>
+                    <label for="description" class="text-black">Descripción</label>
+                </div>
+            </div>
+            <div class="d-flex justify-content-center">
+                <div>
+                    <button type="submit" id="sbt_btn" class="btn btn-danger">Cargar</button>
+                    <a href="../abm" class="btn btn-secondary" id="cancel_btn">Cancelar</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="/js/productABM.js"></script>

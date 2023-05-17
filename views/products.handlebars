@@ -1,0 +1,38 @@
+<div class="container-fluid bg-danger d-flex justify-content-center align-items-center" style="min-height: 110vh">
+    <div class="col-10 bg-dark opacity-75 p-3">
+        <h1 class="text-white text-center">Lista de productos</h1>
+        <div class="d-flex justify-content-evenly flex-wrap">
+            {{#each products.payload}}
+                <div class="col-3 my-4 d-flex justify-content-center align-items-center">
+                    <div class="card bg-danger text-white" style="width: 18rem;">
+                        <img src="{{this.thumbnails}}" class="card-img-top" alt="{{this.title}}">
+                        <div class="card-body">
+                            <h5 class="card-title">{{this.title}}</h5>
+                            <a href="/products/{{this._id}}" class="btn btn-dark">Ver detalle</a>
+                        </div>
+                    </div>
+                </div>
+            {{/each}}
+        </div>
+
+        {{#if products.pagination.active}}
+            <nav>
+                <ul class="pagination justify-content-center">
+                    <li class="page-item">
+                        <a class="page-link" href="{{products.pagination.prevLink}}" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    {{#each products.pagination.pagesLinks}}
+                        <li class="page-item"><a class="page-link{{#if active}} active {{/if}}" href="{{link}}">{{page}}</a></li>
+                    {{/each}}
+                    <li class="page-item">
+                        <a class="page-link" href="{{products.pagination.nextLink}}" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        {{/if}}
+    </div>
+</div>

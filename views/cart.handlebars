@@ -1,0 +1,35 @@
+<div class="container-fluid bg-danger d-flex justify-content-center align-items-center" style="min-height: 100vh">
+    <div class="col-10 bg-dark opacity-75 p-3">
+        <h1 class="text-white text-center">Vista de carrito</h1>
+        <h4 class="text-white">Cart ID: {{cartId}}</h4>
+        <input type="hidden" id="cart_id" value="{{cartId}}">
+        
+        {{#each cart.products}}
+            <div class="row bg-danger border border-dark border-2">
+                <div class="col-3 border-end border-dark">
+                    <h4>{{this.product.title}}</h4>
+                </div>
+                <div class="col-2 border-end border-dark">
+                    <h4>Cantidad: {{this.quantity}}</h4>
+                </div>
+                <div class="col-3 border-end border-dark">
+                    <h4>Precio unit.: ${{this.product.price}}</h4>
+                </div>
+                <div class="col-3 border-end border-dark">
+                    <h4>Valor total: ${{this.totalPrice}}</h4>
+                </div>
+                <div class="col-1 border-end border-dark d-flex justify-content-center">
+                    <button type="button" class="btn btn-dark" title="Eliminar producto" id="deleteProduct" value="{{this.product._id}}"><i class="fa-solid fa-trash"></i></button>
+                </div>
+            </div>
+        {{/each}}
+
+        <div class="col-12 mt-5 d-flex justify-content-center align-items-center">
+            <div class="col-2">
+                <button id="finalizar_compra" type="button" class="btn btn-danger">Finalizar compra</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="../js/cart.js"></script>

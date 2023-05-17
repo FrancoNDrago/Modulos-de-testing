@@ -1,0 +1,22 @@
+<div class="container-fluid bg-danger d-flex justify-content-center align-items-center" style="min-height: 110vh">
+    <div class="col-10 bg-dark opacity-75 p-3">
+        <h1 class="text-white text-center">Lista de productos</h1>
+        <div class="d-flex justify-content-evenly flex-wrap" id="products_list">
+            {{#each products}}
+                <div class="col-3 my-4 d-flex justify-content-center align-items-center">
+                    <div class="card bg-danger text-white" style="width: 18rem;">
+                        <img src="{{this.thumbnails}}" class="card-img-top" alt="{{this.title}}">
+                        <div class="card-body">
+                            <h5 class="card-title">{{this.title}}</h5>
+                            <p class="card-text">Precio: ${{this.price}}</p>
+                            <a href="/products/{{this._id}}" class="btn btn-dark">Ver detalle</a>
+                        </div>
+                    </div>
+                </div>
+            {{/each}}
+        </div>
+    </div>
+</div>
+
+<script src="socket.io/socket.io.js"></script>
+<script src="js/realTimeproducts.js"></script>
